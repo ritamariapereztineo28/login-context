@@ -6,16 +6,15 @@ import Page2 from "./components/Page2";
 import { UserContext } from "./context/userContext";
 import Page3 from "./components/Page3";
 import { useState } from "react";
-
 function App() {
-  const [value, setValue] = useState({
-    name:'',
-    apellido:''
-  });
+  const userData = {
+    name: 'nena',
+    apellido: 'nena',
+  };
   return (
     <BrowserRouter>
       <Switch>
-        <UserContext.Provider value={{value, setValue}}>
+        <UserContext.Provider value={userData}>
           <Route exact path="/">
             <Page1 />
           </Route>

@@ -1,5 +1,5 @@
 import { createContext } from "react";
 export const UserContext = createContext({
-    name:'',
-    apellido:''
+  name: null,
+  apellido: null,
 });

@@ -2,8 +2,7 @@ import { Button, Container, TextField } from "@material-ui/core";
 import { useState } from "react";
 
 function Page1() {
-    
-  const [data, setData] = useState(value);
+  const [data, setData] = useState();
 
   const handleChange = ({ target: { name, value } }) => {
 

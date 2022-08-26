@@ -1,3 +1,3 @@
 import { useContext } from "react";
-import UserContext from "./userContext";
-export default () => UserContext(UserContext);
+import {UserContext} from "./userContext";
+export default () => useContext(UserContext);
