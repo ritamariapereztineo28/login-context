@@ -1,14 +1,14 @@
 import { Button, Container, TextField } from "@material-ui/core";
 import React, { useContext } from "react";
-import useUser from "../context/useUser";
+import useUser from "../context/User/useUser";
+
 
 function Page3() {
-  const user = useUser()
+  const { name, apellido } = useUser();
   return (
     <Container>
-     <label>Nombre: {user.name}</label>
-     <label>Apellido: {user.apellido}</label>
-     {/* <Button onClick={()=>setValue("klk")}>change value</Button> */}
+      <label>Nombre: {name}</label>
+      <label>Apellido: {apellido}</label>
     </Container>
   );
 }
