@@ -1,40 +1,46 @@
 import { Button, Container, TextField } from "@material-ui/core";
-import { useReducer, useState } from "react";
-import { initialState } from "../context/User/initialState";
-import userReducer from "../context/User/userReducer";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppState } from "../context/User/Appcontext";
 
 function Page2() {
-  const {state, dispatch} =useAppState()
-  const [apellido, setApellido] = useState();
+  const { state, dispatch } = useAppState();
+  const [lastName, setLastName] = useState();
 
   const handleChange = ({ target: { value } }) => {
-    setApellido(value);
+    setLastName(value);
   };
   const sendName = () => {
     dispatch({
-      type: "APELLIDO",
-      payload: apellido,
+      type: "LASTNAME",
+      payload: lastName,
     });
   };
-  console.log("klk----",state)
-
   return (
-    <Container>
-      {'nombre:',state.name}
+    <Container
+      style={{
+        width: "fit-content",
+        marginTop: "10%",
+        padding: "5%",
+      }}
+    >
       <TextField
         id="outlined-basic"
         label="Apellido"
         variant="outlined"
-        name="apellido"
+        name="lastname"
         onChange={(e) => handleChange(e)}
         fullWidth
       />
-      <Link onClick={() => sendName()} to="/page3">
-        registrar usuario
+      <Link
+        onClick={() => sendName()}
+        to="/page3"
+        style={{ textDecoration: "none" }}
+      >
+        <Button variant="outlined" style={{ margin: "2%" }}>
+          Registrar Apellido
+        </Button>
       </Link>
-      {/* <Button onClick={()=>sendName()} href={"/page3"}>REGISTRAR APELLIDO</Button> */}
     </Container>
   );
 }
