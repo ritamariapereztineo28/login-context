@@ -2,10 +2,12 @@ import { Button, Container, TextField } from "@material-ui/core";
 import { useReducer, useState } from "react";
 import { initialState } from "../context/User/initialState";
 import userReducer from "../context/User/userReducer";
+import { Link } from "react-router-dom";
+import { useAppState } from "../context/User/Appcontext";
 
 function Page2() {
+  const {state, dispatch} =useAppState()
   const [apellido, setApellido] = useState();
-  const [state, dispatch] = useReducer(userReducer, initialState);
 
   const handleChange = ({ target: { value } }) => {
     setApellido(value);
@@ -16,9 +18,11 @@ function Page2() {
       payload: apellido,
     });
   };
-  console.log(state)
+  console.log("klk----",state)
+
   return (
     <Container>
+      {'nombre:',state.name}
       <TextField
         id="outlined-basic"
         label="Apellido"
@@ -27,7 +31,10 @@ function Page2() {
         onChange={(e) => handleChange(e)}
         fullWidth
       />
-      <Button onClick={()=>sendName()} href={"/page3"}>REGISTRAR APELLIDO</Button>
+      <Link onClick={() => sendName()} to="/page3">
+        registrar usuario
+      </Link>
+      {/* <Button onClick={()=>sendName()} href={"/page3"}>REGISTRAR APELLIDO</Button> */}
     </Container>
   );
 }

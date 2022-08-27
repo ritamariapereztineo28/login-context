@@ -1,14 +1,14 @@
 import { Button, Container, TextField } from "@material-ui/core";
+import { Pagination, Stack } from "@mui/material";
 import { useReducer, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAppState } from "../context/User/Appcontext";
 import { initialState } from "../context/User/initialState";
 import userReducer from "../context/User/userReducer";
 
 function Page1() {
+  const { state, dispatch } = useAppState();
   const [name, setName] = useState();
-  const [state, dispatch] = useReducer(userReducer, initialState);
-  const [isRedirect, setIsRedirect] = useState(false);
-
   const handleChange = ({ target: { value } }) => {
     setName(value);
   };
@@ -18,8 +18,10 @@ function Page1() {
       payload: name,
     });
   };
+  console.log(state);
   return (
     <Container>
+      {("nombre:", state.name)}
       <TextField
         id="outlined-basic"
         label="Usuario"
@@ -28,11 +30,11 @@ function Page1() {
         onChange={(e) => handleChange(e)}
         fullWidth
       />
-      <Link to="/page2">
-        <button type="button">Click Me!</button>
-      </Link>
 
-      <Button onClick={()=>sendName()} href={"/page3"}>REGISTRAR NOMBRE</Button>
+      <Link onClick={() => sendName()} to="/page2">
+        registrar usuario
+      </Link>
+      {/* <Button onClick={()=>sendName()} to={"/page2"} tag={Link}>REGISTRAR NOMBRE</Button> */}
     </Container>
   );
 }

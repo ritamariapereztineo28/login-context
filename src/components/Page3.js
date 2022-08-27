@@ -1,14 +1,16 @@
 import { Button, Container, TextField } from "@material-ui/core";
 import React, { useContext } from "react";
+import { useAppState } from "../context/User/Appcontext";
 import useUser from "../context/User/useUser";
 
 
 function Page3() {
-  const { name, apellido } = useUser();
+  const {state, dispatch} =useAppState()
+  console.log(state)
   return (
     <Container>
-      <label>Nombre: {name}</label>
-      <label>Apellido: {apellido}</label>
+      <label>Nombre: {state.name}</label>
+      <label>Apellido: {state.apellido}</label>
     </Container>
   );
 }
