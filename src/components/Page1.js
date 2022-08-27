@@ -1,8 +1,8 @@
 import { Button, Container, TextField } from "@material-ui/core";
 import { useReducer, useState } from "react";
+import { Link } from "react-router-dom";
 import { initialState } from "../context/User/initialState";
 import userReducer from "../context/User/userReducer";
-import { Link, Redirect } from "react-router-dom";
 
 function Page1() {
   const [name, setName] = useState();
@@ -17,9 +17,7 @@ function Page1() {
       type: "NAME",
       payload: name,
     });
-    setIsRedirect(true)
   };
-  console.log(state);
   return (
     <Container>
       <TextField
@@ -30,10 +28,11 @@ function Page1() {
         onChange={(e) => handleChange(e)}
         fullWidth
       />
-      <Button onClick={() => sendName()}>
-        REGISTRAR NOMBRE
-      </Button>
-      {isRedirect && <Redirect to="/page2" />}
+      <Link to="/page2">
+        <button type="button">Click Me!</button>
+      </Link>
+
+      <Button onClick={()=>sendName()} href={"/page3"}>REGISTRAR NOMBRE</Button>
     </Container>
   );
 }
