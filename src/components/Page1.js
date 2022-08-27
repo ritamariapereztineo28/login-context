@@ -19,7 +19,7 @@ function Page1() {
     <Container
       style={{
         width: "fit-content",
-        marginTop: "10%",
+        margin:'2% auto',
         padding: "5%",
       }}
     >
